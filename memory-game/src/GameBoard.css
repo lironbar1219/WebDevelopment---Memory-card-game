@@ -1,0 +1,309 @@
+body {
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+  display: flex; /* Aligns children in a row */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full height of the viewport */
+  background: radial-gradient(circle, rgba(143,188,187,1) 0%, rgba(102,205,170,1) 100%); /* Background gradient */
+  font-family: 'Arial', sans-serif; /* Default font */
+}
+
+.game-container {
+  display: flex; /* Aligns children in a row */
+  justify-content: space-around; /* Distributes space around items */
+  align-items: start; /* Aligns items to start from the top */
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  width: 100%; /* Full width to spread out children */
+  max-width: 1200px; /* Maximum width of the container */
+  margin: 0 auto; /* Centers the container */
+}
+
+.user, .game, .leaderboard {
+  display: flex; /* Aligns children in a row */
+  flex-direction: column; /* Stacks children vertically */
+  align-items: center; /* Center items vertically in their columns */
+}
+
+.user {
+  flex: 1; /* Allows the user welcome section to grow */
+  order: 1; /* Force user welcome to the left */
+  margin-right: 50px; /* Push everything else to the right */
+}
+
+
+.game {
+  flex: 2; /* Allows the game area to take twice as much space as the side columns */
+  order: 2; /* Keep game in the middle */
+}
+
+.leaderboard {
+  flex: 1; /* Allows the leaderboard to take up space */
+  order: 3; /* Ensures that leaderboard is the last item */
+  padding: 30px; /* Adds padding around the leaderboard */
+  margin-left: 50px; /* Pushes the leaderboard to the right */
+  margin-top: 100px; /* Adds space above the leaderboard */
+  background: #fff; /* White background */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 200px; /* Fixed width for the leaderboard */
+  height: max-content; /* Adjusts height based on content */
+}
+  
+  .leaderboard h2 {
+    color: #4CAF50; /* Color for the header */
+    margin-bottom: 15px; /* Spacing below the header */
+  }
+  
+  .leaderboard ol {
+    padding-left: 20px; /* Indents the list */
+  }
+  
+  .leaderboard li {
+    margin-bottom: 10px; /* Spacing between list items */
+  }
+
+.user {
+  padding-top: 70px; /* Adds space above the user section */
+  flex-grow: 1; /* Allows the user section to grow */
+  max-width: 200px; /* Maximum width of the user section */
+}
+
+.game-header {
+  display: flex; /* Aligns children in a row */
+  justify-content: space-between; /* Distributes space between children */
+  align-items: center; /* Aligns items vertically */
+  padding: 20px; /* Adds padding around the header */
+}
+
+.game-header h1 {
+  font-size: 2rem; /* Larger font size */
+  margin: 0; /* Removes default margin */
+}
+  
+.game-header button {
+    background-color: #4CAF50; /* Green */
+    border: none; /* Removes border */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding around text */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Removes underline */
+    display: inline-block; /* Displays as inline element */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Adds margin around the button */
+    cursor: pointer; /* Changes cursor to pointer */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.button-container {
+  display: flex; /* Aligns children (buttons) inline */
+  justify-content: center; /* Center buttons horizontally */
+  align-items: center; /* Center buttons vertically */
+  gap: 10px; /* Adds space between buttons */
+}
+  
+  .new-game-btn {
+    background-color: #4CAF50; /* Green */
+    border: none; /* Removes border */
+    color: white; /* White text */
+    padding: 15px 32px; /* Padding around text */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Removes underline */
+    display: inline-block; /* Displays as inline element */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Adds margin around the button */
+    cursor: pointer; /* Changes cursor to pointer */
+    border-radius: 12px; /* Rounded corners */
+  }
+  
+  .card-grid {
+    display: grid; /* Aligns children in a grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns with equal width */
+    gap: 20px; /* Adds space between cards */
+    justify-content: center; /* Center cards horizontally */
+    padding: 20px; /* Adds padding around the grid */
+  }
+  
+  .card {
+    background: #f0f0f0; /* Light gray background */
+    cursor: pointer; /* Changes cursor to pointer */
+    perspective: 1000px; /* Adds perspective for 3D effect */
+    position: relative; /* Allows for absolute positioning of children */
+    width: 100px; /* Make card bigger */
+    height: 100px; /* Make card bigger */
+  }
+  
+  .card-content {
+    position: relative; /* Allows for absolute positioning of children */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    transition: transform 0.6s; /* Smooth transition for flipping */
+    transform: rotateY(0deg); /* Start with emoji side down */
+  }
+  
+  .card.flip .card-content {
+    transform: rotateY(360deg); /* Flip to show the emoji */
+  }
+  
+  .card-front, .card-back {
+    position: absolute; /* Allows for absolute positioning */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    backface-visibility: hidden; /* Hides the back of the card */
+    display: flex; /* Aligns children in a row */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    font-size: 3rem; /* Larger font size */
+  }
+  
+  .card-front {
+    background: #fff; /* White background */
+    transform: rotateY(180deg); /* Hide the emoji initially by flipping it away */
+  }
+  
+  .card-back {
+    background: #f0f0f0;
+    transform: rotateY(0deg); /* Show the backside with the question mark */
+  }
+  
+  /* When the card is flipped, show the emoji and hide the question mark */
+  .card.flip .card-front {
+    transform: rotateY(0deg); /* Show the emoji */
+  }
+  
+  .card.flip .card-back {
+    transform: rotateY(-180deg); /* Hide the question mark */
+  }
+  
+  
+  .turns-counter {
+    font-size: 1.5rem; /* Larger font size */
+    margin-top: 20px; /* Adds space above the counter */
+  }
+
+  .six-grid {
+    grid-template-columns: repeat(6, 1fr); /* 6 columns with equal width */
+  }
+  
+  /* Style for the container of the input field */
+.name-input {
+  display: flex;  /* Aligns children in a row */
+  flex-direction: column; /* Stacks children vertically */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  gap: 10px; /* Adds space between the input field and the button */
+  margin-bottom: 20px; /* Adds some space below the input field */
+}
+
+/* Style for the input field itself */
+.name-input input[type="text"] { 
+  font-size: 16px; /* Font size */
+  padding: 10px; /* Padding around the text */
+  border: 2px solid #4CAF50; /* Green border to match the button */
+  border-radius: 5px; /* Rounded corners */
+  outline: none; /* Removes the default focus outline */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+/* Style for the input field on focus to highlight it */
+.name-input input[type="text"]:focus {
+  border-color: #80cbc4; /* Lighter green when focused */
+}
+
+/* Ensuring the button matches the input field styling */
+.name-input button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 5px; /* Rounded corners to match the input field */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.name-input button:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* Style for the select dropdown */
+.name-input select {
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #4CAF50; /* Green border to match the input field and button */
+  border-radius: 5px; /* Rounded corners for consistency */
+  outline: none; /* Removes the default focus outline */
+  background-color: white; /* Background color for the dropdown */
+  cursor: pointer; /* Changes cursor to pointer to indicate it's clickable */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+/* Style for the select dropdown on focus and hover to highlight it */
+.name-input select:focus,
+.name-input select:hover {
+  border-color: #80cbc4; /* Lighter green when focused or hovered */
+}
+
+/* Optionally, style the options within the dropdown */
+.name-input option {
+  padding: 10px; /* Adds padding inside the options for better readability */
+}
+
+.win-modal {
+  position: fixed; /* Fixed position */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex; /* Aligns children in a row */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 2; /* Ensure it sits above other content */
+}
+
+.win-modal-content {
+  background-color: white; /* White background */
+  padding: 20px; /* Adds padding around the content */
+  border-radius: 10px; /* Rounded corners */
+  text-align: center; /* Center text */
+}
+
+/* Transition for cards shuffle */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes shuffleCard1 {
+  0% { transform: translate(0, 0) rotate(0); }
+  25% { transform: translate(-30px, -20px) rotate(-15deg); }
+  50% { transform: translate(-60px, 0) rotate(-30deg); }
+  75% { transform: translate(-30px, 20px) rotate(-15deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+
+@keyframes shuffleCard2 {
+  0% { transform: translate(0, 0) rotate(0); }
+  25% { transform: translate(30px, 20px) rotate(15deg); }
+  50% { transform: translate(60px, 0) rotate(30deg); }
+  75% { transform: translate(30px, -20px) rotate(15deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+
+.card-shuffle-1 {
+  animation: shuffleCard1 0.3s ease-in-out;
+}
+
+.card-shuffle-2 {
+  animation: shuffleCard2 0.3s ease-in-out;
+}
+
+
